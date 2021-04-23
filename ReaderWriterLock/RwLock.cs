@@ -13,12 +13,14 @@ namespace ReaderWriterLock
         public void ReadLocked(Action action)
         {
             lock (readerLock)
-                Interlocked.Increment(ref readersCount);
+                readersCount++;
+
             action.Invoke();
             lock (readerLock)
             {
-                Interlocked.Decrement(ref readersCount);
-                Monitor.Pulse(readerLock);
+                readersCount--;
+                if (readersCount == 0)
+                    Monitor.Pulse(readerLock);
             }
         }
 
