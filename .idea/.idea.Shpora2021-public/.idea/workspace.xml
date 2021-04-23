@@ -9,7 +9,10 @@
     <projectFile>Recap/Recap.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96e18a84-b13e-4e30-b829-f12c90a2b7e5" name="Default Changelist" comment="" />
+    <list default="true" id="96e18a84-b13e-4e30-b829-f12c90a2b7e5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Shpora2021-public/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Shpora2021-public/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReaderWriterLock/RwLock.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ReaderWriterLock/RwLock.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -156,6 +159,7 @@
       <option name="presentableId" value="Default" />
       <updated>1618906276062</updated>
       <workItem from="1618906294877" duration="8057000" />
+      <workItem from="1619186749856" duration="742000" />
     </task>
     <servers />
   </component>
