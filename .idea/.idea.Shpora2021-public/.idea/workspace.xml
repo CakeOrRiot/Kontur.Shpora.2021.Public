@@ -19,15 +19,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="96e18a84-b13e-4e30-b829-f12c90a2b7e5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Shpora2021-public/.idea/contentModel.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Shpora2021-public/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Shpora2021-public/.idea/indexLayout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Shpora2021-public/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Shpora2021-public/.idea/riderModule.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Shpora2021-public/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Shpora2021-public/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClusterClient/Clients/ParallelClusterClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClusterClient/Clients/ParallelClusterClient.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClusterClient/Clients/RoundRobinClusterClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClusterClient/Clients/RoundRobinClusterClient.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClusterClient/Clients/SmartClusterClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClusterClient/Clients/SmartClusterClient.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClusterClient/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClusterClient/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -268,6 +261,7 @@
       <workItem from="1619434527807" duration="264000" />
       <workItem from="1619434832653" duration="10539000" />
       <workItem from="1619534749370" duration="18832000" />
+      <workItem from="1619599837609" duration="2081000" />
     </task>
     <servers />
   </component>

@@ -28,10 +28,12 @@ namespace ClusterClient.Clients
                 Task completedTask;
                 do
                 {
+                    pendingTasks.Add(timeoutTask);
                     var sw = new Stopwatch();
                     sw.Start();
-                    completedTask = await Task.WhenAny(pendingTasks.Append(timeoutTask));
+                    completedTask = await Task.WhenAny(pendingTasks);
                     sw.Stop();
+                    pendingTasks.Remove(timeoutTask);
                     timeout -= sw.Elapsed;
                     pendingTasks.Remove(completedTask);
 
