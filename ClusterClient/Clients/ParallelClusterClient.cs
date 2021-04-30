@@ -24,9 +24,9 @@ namespace ClusterClient.Clients
                     await Task.WhenAny(responseTask, Task.Delay(timeout));
                     if (!responseTask.IsCompletedSuccessfully)
                         throw new TimeoutException();
-                    return responseTask.Result;
+                    return await responseTask;
                 }).ToHashSet();
-            
+
             while (tasks.Count > 0)
             {
                 var finishedTask = await Task.WhenAny(tasks);

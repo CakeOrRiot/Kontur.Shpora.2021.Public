@@ -14,9 +14,10 @@ namespace ClusterClient.Clients
         {
         }
 
+
         public override async Task<string> ProcessRequestAsync(string query, TimeSpan timeout)
         {
-            var pendingTasks = new HashSet<Task>();
+            var pendingTasks = new HashSet<Task<string>>();
             for (var curReplica = 0; curReplica < ReplicaAddresses.Length; curReplica++)
             {
                 var uri = ReplicaAddresses[curReplica];
@@ -24,25 +25,28 @@ namespace ClusterClient.Clients
                 var currentTask = ProcessRequestAsync(request);
                 var timeoutForCurrentTask = timeout / (ReplicaAddresses.Length - curReplica);
                 var timeoutTask = Task.Delay(timeoutForCurrentTask);
+                var sw = Stopwatch.StartNew();
+                var completedTask = await Task.WhenAny(AnySucsessfulFromPool(pendingTasks), timeoutTask, currentTask);
+                timeout -= sw.Elapsed;
                 pendingTasks.Add(currentTask);
-                Task completedTask;
-                do
-                {
-                    pendingTasks.Add(timeoutTask);
-                    var sw = new Stopwatch();
-                    sw.Start();
-                    completedTask = await Task.WhenAny(pendingTasks);
-                    sw.Stop();
-                    pendingTasks.Remove(timeoutTask);
-                    timeout -= sw.Elapsed;
-                    pendingTasks.Remove(completedTask);
+                if (completedTask == timeoutTask)
+                    continue;
+                if (completedTask.IsCompletedSuccessfully)
+                    return await (Task<string>) completedTask;
+            }
 
-                    if (completedTask == timeoutTask)
-                        break;
+            throw new TimeoutException();
+        }
 
-                    if (completedTask.IsCompletedSuccessfully)
-                        return await (Task<string>) completedTask;
-                } while (completedTask != currentTask);
+        private async Task<string> AnySucsessfulFromPool(HashSet<Task<string>> taskPool)
+        {
+            taskPool = taskPool.ToHashSet();
+            while (taskPool.Count > 0)
+            {
+                var completed = await Task.WhenAny(taskPool);
+                if (completed.IsCompletedSuccessfully)
+                    return completed.Result;
+                taskPool.Remove(completed);
             }
 
             throw new TimeoutException();
